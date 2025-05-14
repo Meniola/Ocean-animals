@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent } from "../../components/ui/card";
-import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
+import { Card, CardContent } from "card";
+import { Dialog, DialogContent, DialogTrigger } from "dialog";
 
 type Animal = {
   name: string;
