@@ -1,8 +1,15 @@
-"use client"
-import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+"use client";
 
+import { useState } from "react";
+import { Card, CardContent } from "../../components/ui/card";
+import { Dialog, DialogContent, DialogTrigger } from "../../components/ui/dialog";
+
+type Animal = {
+  name: string;
+  image: string;
+  description: string;
+  role: string;
+};
 const animals = [
   {
     name: "Clownfish",
@@ -63,7 +70,8 @@ const animals = [
 ];
 
 export default function OceanAnimalsInteractive() {
-  const [selectedAnimal, setSelectedAnimal] = useState(null);
+  const [selectedAnimal, setSelectedAnimal] = useState<Animal | null>(null);
+
 
   return (
     <div className="p-6 bg-blue-100 min-h-screen text-center">
