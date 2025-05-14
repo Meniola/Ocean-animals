@@ -1,103 +1,107 @@
-import Image from "next/image";
+"use client"
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
-export default function Home() {
+const animals = [
+  {
+    name: "Clownfish",
+    image: "/clownfish.png",
+    description:
+      "Clownfish form mutualistic relationships with sea anemones. They protect each other from predators and parasites, contributing to reef health.",
+    role:
+      "Clownfish help maintain the balance of the reef ecosystem by keeping sea anemones clean and free from parasites."
+  },
+  {
+    name: "Sea Turtle",
+    image: "/seaturtle.png",
+    description:
+      "Sea turtles maintain healthy seagrass beds and coral reefs, provide habitat for other marine life, and help balance marine food webs.",
+    role:
+      "They control jellyfish populations and cycle nutrients in the seagrass ecosystem."
+  },
+  {
+    name: "Jellyfish",
+    image: "/jellyfish.png",
+    description:
+      "Jellyfish are both predators and prey, serving as food for sea turtles and other marine animals, while also consuming plankton.",
+    role:
+      "They regulate plankton populations and help support biodiversity by being part of the ocean food chain."
+  },
+  {
+    name: "Coral",
+    image: "/coral.png",
+    description:
+      "Corals build reefs that provide shelter, breeding grounds, and hunting grounds for countless marine species.",
+    role:
+      "They are the foundation of reef ecosystems and protect coastlines from erosion."
+  },
+  {
+    name: "Shark",
+    image: "/shark.png",
+    description:
+      "As apex predators, sharks keep prey populations in check and ensure species diversity by hunting the sick and weak.",
+    role:
+      "They maintain the balance in food chains and support healthy fish populations."
+  },
+  {
+    name: "Octopus",
+    image: "/octopus.png",
+    description:
+      "Octopuses are intelligent predators that help control crustacean and mollusk populations. They also serve as prey to larger animals.",
+    role:
+      "They aid in population control and are indicators of marine health."
+  },
+  {
+    name: "Plankton",
+    image: "/plankton.png",
+    description:
+      "Plankton are tiny organisms that float in the ocean and form the base of the marine food web, feeding many other animals.",
+    role:
+      "They produce much of Earth’s oxygen and are the first step in the ocean food chain."
+  }
+];
+
+export default function OceanAnimalsInteractive() {
+  const [selectedAnimal, setSelectedAnimal] = useState(null);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+    <div className="p-6 bg-blue-100 min-h-screen text-center">
+      <h1 className="text-4xl font-bold mb-8 text-blue-900">
+        🌊 Explore Ocean Animals! 🐠
+      </h1>
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 justify-center">
+        {animals.map((animal, index) => (
+          <Dialog key={index}>
+            <DialogTrigger asChild>
+              <Card
+                onClick={() => setSelectedAnimal(animal)}
+                className="cursor-pointer transition-transform hover:scale-105"
+              >
+                <CardContent className="flex flex-col items-center p-4">
+                  <img
+                    src={animal.image}
+                    alt={animal.name}
+                    className="h-24 mb-3"
+                  />
+                  <h2 className="text-lg font-semibold text-blue-800">
+                    {animal.name}
+                  </h2>
+                </CardContent>
+              </Card>
+            </DialogTrigger>
+            <DialogContent className="text-left">
+              <h2 className="text-xl font-bold mb-2 text-blue-900">
+                {selectedAnimal?.name}
+              </h2>
+              <p className="mb-2">{selectedAnimal?.description}</p>
+              <p className="italic text-sm text-blue-700">
+                Ecosystem Role: {selectedAnimal?.role}
+              </p>
+            </DialogContent>
+          </Dialog>
+        ))}
+      </div>
     </div>
   );
 }
